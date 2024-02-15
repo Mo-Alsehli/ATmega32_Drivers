@@ -8,6 +8,8 @@
 #ifndef ATMEGA32_H_
 #define ATMEGA32_H_
 
+#define F_CPU	1000000UL
+
 //---------------------------------------------------
 //Includes
 //---------------------------------------------------
@@ -63,14 +65,46 @@
 // Peripheral register:	EXTI
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 // MCU Control Register.
-#define MCUCR_BASE						(*(volatile uint8_t*)0x55)
+#define MCUCR						*((volatile uint8_t*)0x55)
 // MCU Control And Status Register
-#define MCUCSR_BASE						(*(volatile uint8_t*)0x54)
+#define MCUCSR						*((volatile uint8_t*)0x54)
 // General Interrupt Control Register
-#define GICR_BASE						(*(volatile uint8_t*)0x5B)
+#define GICR						*((volatile uint8_t*)0x5B)
 // General Interrupt Flag Register
-#define GIFR_BASE						(*(volatile uint8_t*)0x5A)
+#define GIFR						*((volatile uint8_t*)0x5A)
 
+//-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+// Peripheral register:	UART
+//-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+// USART I/O Data Register
+#define UDR							*((volatile uint8_t*)0x2C)
+
+// USART Control and Status Register A
+#define UCSRA						*((volatile uint8_t*)0x2B)
+
+// USART Control and Status Register B
+#define UCSRB						*((volatile uint8_t*)0x2A)
+
+// USART Control and Status Register C
+#define UCSRC						*((volatile uint8_t*)0x40)
+
+// USART Baud Rate Registers
+#define UBRRH						*((volatile uint8_t*)0x40)
+#define UBRRL						*((volatile uint8_t*)0x29)
+
+//-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+// Peripheral register:	SPI
+//-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+// SPI Control Register
+#define SPCR						*((volatile uint8_t*)0x2D)
+
+// SPI Status Register
+#define SPSR						*((volatile uint8_t*)0x2E)
+
+// SPI Data Register
+#define SPDR						*((volatile uint8_t*)0x2F)
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 // Peripheral Instants:
