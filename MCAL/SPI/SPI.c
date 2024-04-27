@@ -34,11 +34,12 @@ void SPIInit(SPIConfig_t* spiCfg){
 	} else if(spiCfg->doubleSpeedMode == SPI_DoubleSpeedMode_Dis){
 		ClearPin(SPSR, SPI2X);
 	}
-	
+	SetPin(SPCR, 0);
 	// Enable SPI
 	SetPin(SPCR, SPE);
 }
 uint8_t SPITransieve(uint8_t data){
+	
 	SPDR = data;
 	while(ReadPin(SPSR, SPIF) == 0);
 	return SPDR;
